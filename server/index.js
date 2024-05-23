@@ -10,17 +10,17 @@ const port = 3000
 // allow static assets in public folder
 app.use(express.static('public'))
 
+const root = require('path').join(__dirname, '../client', 'dist')
+app.use(express.static(root))
+
 // define our server routes
 app.get('/', (req, res)=>{
-    res.send("Server running functionally!")
+    res.sendFile('index.html', {root})
 })
 
-app.get('/message', (req, res)=>{
-    // do something when the server processes this request
-
-    // send back a response to the client
-    res.send("Hello from our server!")
-})
+app.get('/test', (req, res) => {
+    res.send('Server is operational');
+  });
 
 // run our server to listen at the port we defined
 app.listen(port, ()=>{
