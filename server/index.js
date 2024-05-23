@@ -7,7 +7,14 @@ const app = express()
 // define the port our server will run
 const port = 3000
 
+// allow static assets in public folder
+app.use(express.static('public'))
+
 // define our server routes
+app.get('/', (req, res)=>{
+    res.send("Server running functionally!")
+})
+
 app.get('/message', (req, res)=>{
     // do something when the server processes this request
 
